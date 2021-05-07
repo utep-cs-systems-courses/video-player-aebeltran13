@@ -14,7 +14,6 @@ def extractFrames(filename,colorFramesQueue,maxFrames):
         colorFramesQueue.insert(image)
         success,image = vidcap.read()
         count +=1
-        print("Extracted frame ", count)
 
 def convertToGrayScale(colorFramesQueue,grayScaleFramesQueue):
     while True:
@@ -24,12 +23,10 @@ def convertToGrayScale(colorFramesQueue,grayScaleFramesQueue):
             frame = colorFramesQueue.remove()
             grayScaleFrame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             grayScaleFramesQueue.insert(grayScaleFrame)
-    print("Finished Gray")
     
 def displayFrames(grayScaleFramesQueue):
     while True:
         frame = grayScaleFramesQueue.remove()
-        print("displaeyed frame")
         cv2.imshow('Video',frame)
         if grayScaleFramesQueue.empty():
             continue
@@ -52,4 +49,4 @@ displayFramesThread = threading.Thread(target = displayFrames, args = (grayScale
 #Start threads
 extractFramesThread.start()
 convertToGrayScalThread.start()
-#displayFramesThread.start()
+displayFramesThread.start()
