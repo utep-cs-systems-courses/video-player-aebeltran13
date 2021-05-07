@@ -1,4 +1,4 @@
-import threading, cv2, base64, queue
+import threading, cv2, queue
 
 framesQueueLock = threading.Lock()
 
