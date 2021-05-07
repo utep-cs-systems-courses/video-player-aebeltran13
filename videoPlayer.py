@@ -43,7 +43,7 @@ maxFrames = 9999
 
 #Make threads
 extractFramesThread = threading.Thread(target = extractFrames, args=(fileName,colorFramesQueue,maxFrames))
-convertToGrayScalThread = threading.Thread(target = converToGrayScale, args=(colorFramesQueue, grayScaleFramesQueue))
+convertToGrayScalThread = threading.Thread(target = convertToGrayScale, args=(colorFramesQueue, grayScaleFramesQueue))
 displayFramesThread = threading.Thread(target = displayFrames, args = (grayScaleFramesQueue))
 
 #Start threads
